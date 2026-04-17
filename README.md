@@ -41,9 +41,28 @@ That's it. Open Claude Code, type `/policeH`, and it activates on your next buil
 - Claude Code with Haiku 4.5 model access (cops are Haiku 4.5 agents)
 - That's it for basic use
 
+## auto-updates (opt-in, optional)
+
+Get updates automatically when we push improvements. The updater ONLY touches the SKILL.md file — it does not collect data, phone home, or modify anything else. Every update is GPG-signed and verified before applying. Delete the script at any time to stop updates.
+
+```bash
+cp update-check.sh ~/.claude/skills/Haikupolice/update-check.sh
+cp PUBLIC-KEY.asc ~/.claude/skills/Haikupolice/PUBLIC-KEY.asc
+chmod +x ~/.claude/skills/Haikupolice/update-check.sh
+(crontab -l 2>/dev/null; echo "0 */6 * * * ~/.claude/skills/Haikupolice/update-check.sh") | crontab -
+```
+
 ## advanced setup (optional)
 
 The SKILL.md references optional hardening features (GPG emergency override, append-only learning log, credential scrubber, budget gates). These require additional setup described in the file. The core review system works without them.
+
+## all editions
+
+| Edition | Model | Cost | Link |
+|---------|-------|------|------|
+| **Opus** | Claude Opus 4.6 | Highest quality, highest cost | [triple-gate](https://github.com/coderook520/triple-gate) |
+| **Sonnet** | Claude Sonnet 4.6 | Balanced quality/cost | [triple-gate-Sonnet](https://github.com/coderook520/triple-gate-Sonnet) |
+| **Haiku** | Claude Haiku 4.5 | Fastest, lowest cost | [triple-gate-Haiku](https://github.com/coderook520/triple-gate-Haiku) |
 
 ## license
 
